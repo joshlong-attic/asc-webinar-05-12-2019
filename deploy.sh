@@ -1,9 +1,11 @@
 #!/bin/bash
 
+# curl -L https://aka.ms/InstallAzureCli | bash
+echo "the current UNIX is"
+uname -a
 
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
-
-curl -L https://aka.ms/InstallAzureCli | bash
 echo "Installed the Azure CLI..."
 
 # 
