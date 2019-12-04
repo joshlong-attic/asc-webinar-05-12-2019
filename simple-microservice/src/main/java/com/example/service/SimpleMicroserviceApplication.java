@@ -41,7 +41,7 @@ public class SimpleMicroserviceApplication {
           log.info("returning all the " + Customer.class.getName() + " instances.");
           return ok().body(customerRepository.findAll(), Customer.class);
         })
-        .GET("/hello", r -> ok().bodyValue(Collections.singletonMap("greeting", "Hello, world!")))
+        .GET("/hello", r -> ok().syncBody(Collections.singletonMap("greeting", "Hello, world!")))
         .build();
   }
 
