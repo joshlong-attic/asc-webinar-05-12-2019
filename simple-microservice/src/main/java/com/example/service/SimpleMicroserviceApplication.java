@@ -47,11 +47,15 @@ public class SimpleMicroserviceApplication {
 
   @Bean
   ApplicationListener<ApplicationReadyEvent> ready(CustomerRepository repository) {
-    return event -> Flux
-        .just("A", "B", "C")
-        .map(name -> new Customer(null, name))
-        .flatMap(repository::save)
-        .subscribe(log::info);
+    return event ->
+        repository
+            .deleteAll()
+            .thenMany(Flux
+                .just("A", "B", "C")
+                .map(name -> new Customer(null, name))
+                .flatMap(repository::save))
+            .thenMany(repository.findAll())
+            .subscribe(log::info);
   }
 
   public static void main(String[] args) {
