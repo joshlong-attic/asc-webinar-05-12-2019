@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -35,13 +36,15 @@ import static org.springframework.web.reactive.function.server.ServerResponse.*;
 public class SimpleMicroserviceApplication {
 
   @Bean
-  RouterFunction<ServerResponse> routes(CustomerRepository customerRepository) {
+  RouterFunction<ServerResponse> routes(
+      @Value("${application.message}") String message,
+      CustomerRepository customerRepository) {
     return route()
         .GET("/customers", req -> {
           log.info("returning all the " + Customer.class.getName() + " instances.");
           return ok().body(customerRepository.findAll(), Customer.class);
         })
-        .GET("/hello", r -> ok().syncBody(Collections.singletonMap("greeting", "Hello, world!")))
+        .GET("/hello", r -> ok().bodyValue(Map.of("greeting", message)))
         .build();
   }
 
