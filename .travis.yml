@@ -1,0 +1,21 @@
+language: java
+
+services:
+  - mongodb
+
+jdk:
+  - oraclejdk11
+
+cache:
+  directories:
+    - $HOME/.m2/repository/
+
+install:
+  - mvn -f simple-microservice/pom.xml -DskipTests=true clean install 
+
+script:
+  -  ./deploy.sh
+
+env:
+  - SPRING_PROFILES_ACTIVE=ci
+
