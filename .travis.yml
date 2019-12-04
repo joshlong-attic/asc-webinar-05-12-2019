@@ -16,6 +16,6 @@ install:
 script:
   -  ./deploy.sh
 
-env:
-  - SPRING_PROFILES_ACTIVE=ci
+# env:
+#   - SPRING_PROFILES_ACTIVE=ci
 
