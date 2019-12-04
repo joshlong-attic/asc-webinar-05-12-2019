@@ -26,7 +26,8 @@
 * Fill in the values as shown here and click "Save".
 * Now you can goto the `Logs` section and run the following query: 
 
-```AppPlatformLogsforSpring
+```
+AppPlatformLogsforSpring
 | where AppName == "simple-microservice"
 ```
 
