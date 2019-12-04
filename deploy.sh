@@ -14,14 +14,14 @@ echo "Installed the Azure CLI..."
 # TLDR: I had to run:
 # 		az ad sp create-for-rbac --name azure-ci-username    
 az login --service-principal -u http://${AZURE_SERVICE_PRINCIPAL_USERNAME} -p $AZURE_SERVICE_PRINCIPAL_PASSWORD  --tenant $AZURE_SERVICE_PRINCIPAL_TENANT_ID
-echo "Logged in to Azure account using servie principal ${AZURE_SERVICE_PRINCIPAL_USERNAME}..."
+echo "Logged in to Azure account using service principal ${AZURE_SERVICE_PRINCIPAL_USERNAME}..."
 
 az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-cloud/spring_cloud-0.1.0-py2.py3-none-any.whl
 echo "Added the Azure CLI Azure Spring Cloud extension..."
 
 az configure --defaults group=asc-resource-group
 az configure --defaults spring-cloud=asc-webinar-06-12-2019
-echo "Configured default resource grup and default Azure Spring Cloud instance..."
+echo "Configured default resource group and default Azure Spring Cloud instance..."
 
 az spring-cloud app deploy -n simple-microservice --jar-path simple-microservice/target/service-0.0.1-SNAPSHOT.jar
 echo "Deployed the Simple Microservice .jar... "

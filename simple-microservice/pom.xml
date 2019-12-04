@@ -9,10 +9,8 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>service</artifactId>
+	<artifactId>simple-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>service</name>
-	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
 		<azure.version>2.2.0</azure.version>
