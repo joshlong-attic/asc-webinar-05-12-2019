@@ -11,7 +11,7 @@ cache:
     - $HOME/.m2/repository/
 
 install:
-  - mvn -f simple-microservice/pom.xml -DskipTests=true clean install 
+  - mvn -f simple-microservice/pom.xml -Pcloud -DskipTests=true clean install
 
 script:
   -  ./deploy.sh
