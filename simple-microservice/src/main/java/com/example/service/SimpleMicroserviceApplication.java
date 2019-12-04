@@ -37,8 +37,12 @@ public class SimpleMicroserviceApplication {
 
   @Bean
   RouterFunction<ServerResponse> routes(
+      @Value("${spring.data.mongodb.uri:}") String mongoDbUri,
       @Value("${application.message}") String message,
       CustomerRepository customerRepository) {
+
+    log.info("mongoDbUri: " + mongoDbUri);
+
     return route()
         .GET("/customers", req -> {
           log.info("returning all the " + Customer.class.getName() + " instances.");
