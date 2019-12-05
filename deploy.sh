@@ -8,8 +8,8 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 echo "Installed the Azure CLI..."
 
-ASC_CLUSTER_NAME=asc-2 
-APP_NAME=asc-2-app
+ASC_CLUSTER_NAME=asc-3 
+APP_NAME=simple-microservice
 
 # 
 # Sign in with a Service Principal 
