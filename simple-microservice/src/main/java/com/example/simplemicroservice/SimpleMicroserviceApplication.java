@@ -32,13 +32,13 @@ public class SimpleMicroserviceApplication {
   @Bean
   RouterFunction<ServerResponse> routes(
       CustomerRepository repository,
-//      DiscoveryClient dc,
+      DiscoveryClient dc,
       @Value("${spring.data.mongodb.uri:}") String mongoDbUri,
       @Value("${application.message:}") String message) {
     return route()
         .GET("/message", r -> ok().bodyValue(message))
         .GET("/mongo", r -> ok().bodyValue(mongoDbUri))
-//        .GET("/clients", r -> ok().bodyValue(this.hostsAndPorts(dc)))
+        .GET("/clients", r -> ok().bodyValue(this.hostsAndPorts(dc)))
         .GET("/customers", request -> ok().body(repository.findAll(), Customer.class))
         .build();
   }
@@ -49,7 +49,6 @@ public class SimpleMicroserviceApplication {
         .map(si -> si.getUri().toString())
         .collect(Collectors.toList());
   }
-
 }
 
 interface CustomerRepository extends ReactiveCrudRepository<Customer, String> {
