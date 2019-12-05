@@ -30,7 +30,6 @@
 AppPlatformLogsforSpring
 | where AppName == "simple-microservice"
 ```
-
 * You'll need to add the following to your Maven builds to get this to work
 ```
   <profiles>
@@ -55,3 +54,4 @@ AppPlatformLogsforSpring
         </profile>
     </profiles>
     ```
+* You can [test the application here](https://asc-webinar-06-12-2019.test.azuremicroservices.io/simple-microservice/default/customers)
