@@ -23,5 +23,5 @@ az configure --defaults group=asc-resource-group
 az configure --defaults spring-cloud=asc-webinar-06-12-2019
 echo "Configured default resource group and default Azure Spring Cloud instance..."
 
-az spring-cloud app deploy -n simple-microservice --jar-path simple-microservice/target/simple-microservice-0.0.1-SNAPSHOT.jar
+az spring-cloud app deploy -n asc-1 --jar-path simple-microservice/target/simple-microservice-0.0.1-SNAPSHOT.jar
 echo "Deployed the Simple Microservice .jar... "
