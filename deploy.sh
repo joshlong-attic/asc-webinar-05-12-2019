@@ -8,6 +8,9 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 echo "Installed the Azure CLI..."
 
+ASC_CLUSTER_NAME=asc-2 
+APP_NAME=asc-3
+
 # 
 # Sign in with a Service Principal 
 # https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest 
@@ -20,8 +23,8 @@ az extension add -y --source https://azureclitemp.blob.core.windows.net/spring-c
 echo "Added the Azure CLI Azure Spring Cloud extension..."
 
 az configure --defaults group=asc-resource-group
-az configure --defaults spring-cloud=asc-webinar-06-12-2019
+az configure --defaults spring-cloud=${ASC_CLUSTER_NAME}
 echo "Configured default resource group and default Azure Spring Cloud instance..."
 
-az spring-cloud app deploy -n asc-1 --jar-path simple-microservice/target/simple-microservice-0.0.1-SNAPSHOT.jar
+az spring-cloud app deploy -n  ${APP_NAME} --jar-path simple-microservice/target/simple-microservice-0.0.1-SNAPSHOT.jar
 echo "Deployed the Simple Microservice .jar... "
