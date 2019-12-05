@@ -33,11 +33,11 @@ public class SimpleMicroserviceApplication {
   RouterFunction<ServerResponse> routes(
       CustomerRepository repository,
 //      DiscoveryClient dc,
-      @Value("${spring.data.mongodb.uri:}") String mongoDbUri,
+//      @Value("${spring.data.mongodb.uri:}") String mongoDbUri,
       @Value("${application.message:}") String message) {
     return route()
         .GET("/message", r -> ok().bodyValue(message))
-        .GET("/mongo", r -> ok().bodyValue(mongoDbUri))
+//        .GET("/mongo", r -> ok().bodyValue(mongoDbUri))
 //        .GET("/clients", r -> ok().bodyValue(this.hostsAndPorts(dc)))
         .GET("/customers", request -> ok().body(repository.findAll(), Customer.class))
         .build();
